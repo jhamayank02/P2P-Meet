@@ -112,6 +112,10 @@ io.on('connection', (socket) => {
     socket.on("REMOTE_AUDIO_DISABLED", ({ to }) => {
         io.to(to).emit("REMOTE_AUDIO_DISABLED");
     })
+
+    socket.on("CHAT", ({ to, message }) => {
+        io.to(to).emit("CHAT", {message});
+    })
 })
 
 
