@@ -50,6 +50,14 @@ const login = TryCatch(async (req, res) => {
 const register = TryCatch(async (req, res) => {
     const { name, email, password } = req.body;
 
+    if(name.trim().length() === 0 || email.trim().length() === 0 || password.trim().length() === 0){
+        return res.status(200).json({
+            status: 200,
+            success: false,
+            message: "Please fill all the fields"
+        })
+    }
+
     const existingUser = await userModel.findOne({ email });
 
     if (existingUser) {
