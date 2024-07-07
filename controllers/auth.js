@@ -50,7 +50,7 @@ const login = TryCatch(async (req, res) => {
 const register = TryCatch(async (req, res) => {
     const { name, email, password } = req.body;
 
-    if(name.trim().length() === 0 || email.trim().length() === 0 || password.trim().length() === 0){
+    if(name === undefined || email === undefined || password === undefined || name.trim().length() === 0 || email.trim().length() === 0 || password.trim().length() === 0){
         return res.status(200).json({
             status: 200,
             success: false,
